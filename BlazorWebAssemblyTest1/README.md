@@ -1,0 +1,3 @@
+﻿Made by myself, using Blazor WebAssembly (with Jetbrains' Rider IDE)
+
+The goal is to create a minimalistic project using the Blazor framework to become familiar with its features. There aren't many specific requirements for this project. I plan to connect the application to a local PostgreSQL database and perform operations on an entity using Entity Framework to handle the database interactions. Other than that, I will improvise and try to learn functionalities related to Blazor as I Code. 
