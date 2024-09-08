@@ -1,0 +1,35 @@
+﻿@page "/houses"
+@using BlazorWebAssemblyTest1.Domain.House
+@using BlazorWebAssemblyTest1.Entity
+
+@inject IHouseService HouseService
+
+<h3>Houses List</h3>
+
+@foreach (var house in houses)
+{
+    <hr/>
+    <hr/>
+    
+    <h2>@house.Rent</h2>
+    <h3>@house.Address</h3>
+    <hr/>
+    @foreach (var person in house.Persons)
+    {
+        <h4>@person.FirstName</h4>
+    }
+    
+    <br/>
+    <br/>
+}
+
+
+@code {
+    public List<House> houses;
+    
+    protected override void OnInitialized()
+    {
+        houses = HouseService.GetAllHousesWithPersons();
+    }
+}
+}
