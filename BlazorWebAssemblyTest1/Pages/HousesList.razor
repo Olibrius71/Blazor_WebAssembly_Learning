@@ -1,35 +1,45 @@
 ﻿@page "/houses"
+
+<div class="page-content">
+    <h1 class="title">Houses List</h1>
+
+    <section class="houses-container">
+        
+        @foreach (var house in houses)
+        {
+            <div class="home-card">
+                <h2>@house.Rent $ / mois</h2>
+                <h3>@house.Address</h3>
+                <button class="details-button" onclick="@(() =>goToHouseDetails(house.Id))">DETAILS</button>
+                <hr/>
+                @foreach (var person in house.Persons)
+                {
+                    <h4>@person.FirstName</h4>
+                }
+            </div>
+        }
+        
+    </section>
+    
+</div>
+
+
 @using BlazorWebAssemblyTest1.Domain.House
 @using BlazorWebAssemblyTest1.Entity
 
 @inject IHouseService HouseService
-
-<h3>Houses List</h3>
-
-@foreach (var house in houses)
-{
-    <hr/>
-    <hr/>
-    
-    <h2>@house.Rent</h2>
-    <h3>@house.Address</h3>
-    <hr/>
-    @foreach (var person in house.Persons)
-    {
-        <h4>@person.FirstName</h4>
-    }
-    
-    <br/>
-    <br/>
-}
-
+@inject NavigationManager NavigationManager
 
 @code {
-    public List<House> houses;
+    private List<House> houses;
     
     protected override void OnInitialized()
     {
         houses = HouseService.GetAllHousesWithPersons();
     }
-}
+    
+    private void goToHouseDetails(Guid id)
+    {
+        NavigationManager.NavigateTo($"/house/{id}");
+    }
 }

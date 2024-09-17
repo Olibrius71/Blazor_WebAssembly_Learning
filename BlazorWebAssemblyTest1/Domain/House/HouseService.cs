@@ -46,4 +46,9 @@ public class HouseService : IHouseService
     {
         return HousesList;
     }
+    
+    public Entity.House? GetHouseByIdWithPersons(Guid houseId)
+    {
+        return HousesList.Find(house => house.Id == houseId);
+    }
 }

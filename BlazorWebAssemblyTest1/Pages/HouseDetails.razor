@@ -1,0 +1,12 @@
+﻿@page "/house/{HouseId:guid}"
+
+<h1>HouseDetails</h1>
+<h2>@House.Rent $ / mois</h2>
+@foreach (var person in House.Persons)
+{
+    <p>@person.FirstName</p>
+}
+
+@code {
+    
+}

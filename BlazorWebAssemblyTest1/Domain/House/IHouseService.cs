@@ -3,4 +3,6 @@
 public interface IHouseService
 {
     List<Entity.House> GetAllHousesWithPersons();
+    
+    Entity.House? GetHouseByIdWithPersons(Guid houseId);
 }
