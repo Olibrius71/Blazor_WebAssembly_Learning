@@ -8,6 +8,7 @@ public class Person
     public Guid Id { get; set; }
     
     public string FirstName { get; set; } = string.Empty;
+    public int Age { get; set; }
     
     public Guid? HouseId { get; set; }
     public House? House { get; set; }

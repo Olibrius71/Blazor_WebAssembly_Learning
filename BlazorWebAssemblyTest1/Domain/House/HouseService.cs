@@ -14,8 +14,8 @@ public class HouseService : IHouseService
             Rent = 1200.50f,
             Persons = new List<Person>
             {
-                new Person { Id = Guid.NewGuid(), FirstName = "John" },
-                new Person { Id = Guid.NewGuid(), FirstName = "Jane" }
+                new Person { Id = Guid.NewGuid(), FirstName = "John", Age = 30 },
+                new Person { Id = Guid.NewGuid(), FirstName = "Jane", Age = 25 }
             }
         },
         new Entity.House
@@ -25,8 +25,8 @@ public class HouseService : IHouseService
             Rent = 1500.75f,
             Persons = new List<Person>
             {
-                new Person { Id = Guid.NewGuid(), FirstName = "Alice" },
-                new Person { Id = Guid.NewGuid(), FirstName = "Bob" }
+                new Person { Id = Guid.NewGuid(), FirstName = "Alice", Age = 35 },
+                new Person { Id = Guid.NewGuid(), FirstName = "Bob", Age = 40 }
             }
         },
         new Entity.House
@@ -36,7 +36,7 @@ public class HouseService : IHouseService
             Rent = 1000.00f,
             Persons = new List<Person>
             {
-                new Person { Id = Guid.NewGuid(), FirstName = "Charlie" }
+                new Person { Id = Guid.NewGuid(), FirstName = "Charlie", Age = 22}
             }
         }
     };

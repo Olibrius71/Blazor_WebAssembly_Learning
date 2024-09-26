@@ -14,6 +14,8 @@ public partial class HouseDetails : ComponentBase
     [Inject]
     private IHouseService houseService { get; set; }
     
+    public IList<Person> selectedPerson { get; set; } = new List<Person>();
+    
     protected override void OnInitialized()
     {
         House = houseService.GetHouseByIdWithPersons(HouseId);

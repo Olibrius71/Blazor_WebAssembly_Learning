@@ -1,12 +1,42 @@
 ﻿@page "/house/{HouseId:guid}"
+@using BlazorWebAssemblyTest1.Entity
+@inject NotificationService NotificationService
 
-<h1>HouseDetails</h1>
-<h2>@House.Rent $ / mois</h2>
-@foreach (var person in House.Persons)
-{
-    <p>@person.FirstName</p>
-}
+<section class="p-5">
+    <h1>HouseDetails</h1>
+    <h2>@House.Rent $ / mois</h2>
+    @foreach (var person in House.Persons)
+    {
+        <p>@person.FirstName</p>
+    }
+    <RadzenDataGrid class="w-50" Data="@House.Persons" AllowSorting="true" @bind-Value="@selectedPerson" TItem="Person"
+                    SelectionMode="DataGridSelectionMode.Single" RowSelect="@(pers => HandleRowSelection(pers))">
+        <Columns>
+            <RadzenDataGridColumn Property="FirstName" Title="Prenom"></RadzenDataGridColumn>
+            <RadzenDataGridColumn Property="Age" Title="Age"></RadzenDataGridColumn>
+        </Columns>
+    </RadzenDataGrid>
+
+    <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="11px">
+        @if (selectedPerson.Count > 0)
+        {
+            <p>@selectedPerson[0].FirstName</p>
+            <p>@selectedPerson[0].Age</p>
+        }
+    </RadzenStack>
+</section>
+
 
 @code {
-    
+
+    void HandleRowSelection(Person person)
+    {
+        NotificationService.Notify(new NotificationMessage()
+        {
+            Severity = NotificationSeverity.Info,
+            Summary = "Click effectué",
+            Detail = "Vous avez sélectionnée " + person.FirstName,
+            Duration = 3500
+        });
+    }
 }
